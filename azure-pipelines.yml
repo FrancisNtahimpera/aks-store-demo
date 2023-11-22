@@ -11,7 +11,7 @@ variables:
   tag: '$(Build.BuildId)'
   imagePullSecret: 'imagesecret'
   poolName: 'Pool-10'
-  k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
+  k8sNamespaceForPR: 'review-app-$(Build.SourceBranchName)-$(System.PullRequest.PullRequestId)'
 
 stages:
 - stage: Deploy
