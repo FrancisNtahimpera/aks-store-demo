@@ -9,7 +9,7 @@ variables:
   imageRepository: 'votre_utilisateur/votre_projet'
   containerRegistry: 'docker.io'  # Adresse du registre Docker Hub
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'votre_secret'
+  imagePullSecret: 'imagesecret'
   poolName: 'Pool-10'
   k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
 
