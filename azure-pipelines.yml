@@ -6,8 +6,8 @@ resources:
 
 variables:
   dockerRegistryServiceConnection: 'b0403b9a-9a14-4933-8fd6-e43ffdbff44c'
-  imageRepository: 'votre_utilisateur/votre_projet'
-  containerRegistry: 'docker.io'  # Adresse du registre Docker Hub
+  imageRepository: 'containerregaksdemo.azurecr.io/adminuser/aksdemo'
+  containerRegistry: 'containerregaksdemo.azurecr.io'  # Adresse du registre Docker Hub
   tag: '$(Build.BuildId)'
   imagePullSecret: 'imagesecret'
   poolName: 'Pool-10'
