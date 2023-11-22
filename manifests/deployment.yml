@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: francisntahimperaaksstoredemo 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: francisntahimperaaksstoredemo
+  template:
+    metadata:
+      labels:
+        app: francisntahimperaaksstoredemo 
+    spec:
+      containers:
+        - name: francisntahimperaaksstoredemo 
+          image: containerregaksdemo.azurecr.io/francisntahimperaaksstoredemo
+          ports:
+          - containerPort: 8080
