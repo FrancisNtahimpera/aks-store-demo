@@ -4,14 +4,14 @@ trigger:
       - '*'
 
 pool:
-  vmImage: 'ubuntu-latest'
+  Name: Pool-10
 
 stages:
-- stage: BuildAndDeploy
-  displayName: 'Build and Deploy'
+- stage: Build
+  displayName: 'Build'
   jobs:
-  - job: BuildAndDeploy
-    displayName: 'Build and Deploy'
+  - job: Build
+    displayName: 'Build '
     steps:
     # Étape de construction du microservice 1
     - script: |
