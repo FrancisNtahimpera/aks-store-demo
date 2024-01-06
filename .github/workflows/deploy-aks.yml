@@ -1,4 +1,4 @@
-name: AKS Deployment
+name: Deploy to AKS
 
 on:
   push:
@@ -9,14 +9,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      RESOURCE_GROUP: ${{ secrets.AZURE_RESOURCE_GROUP }}
+      CLUSTER_NAME: ${{ secrets.AZURE_AKS_CLUSTER_NAME }}
+      REGISTRY_NAME: ${{ secrets.ACR_NAME }}
+      REGISTRY_USERNAME: ${{ secrets.ACR_USERNAME }}
+      REGISTRY_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+      KUBE_NAMESPACE: "default"
+      DEPLOYMENT_FILE: "/aks-store-quickstart.yaml"
+
     steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-      - name: AKS Deployment
-        uses: azure/aks-set-context@v1
-        with:
-          creds: '${{ secrets.AZURE_CREDENTIALS }}'
-          cluster-name: ${{ secrets.AZURE_AKS_CLUSTER_NAME }}
-          resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}
+    - name: Log in to Azure Container Registry
+      run: az acr login --name ${{ env.REGISTRY_NAME }} --username ${{ env.REGISTRY_USERNAME }} --password ${{ env.REGISTRY_PASSWORD }}
 
-      - name: Kubectl apply
-        run: kubectl apply -f /aks-store-quickstart.yaml
+    - name: Set up kubectl
+      run: az aks get-credentials --resource-group ${{ env.RESOURCE_GROUP }} --name ${{ env.CLUSTER_NAME }}
+
+    - name: Deploy to AKS
+      run: |
+        kubectl apply -f ${{ env.DEPLOYMENT_FILE }} -n ${{ env.KUBE_NAMESPACE }}
