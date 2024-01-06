@@ -11,7 +11,7 @@ jobs:
 
     env:
         # RESOURCE_GROUP: ${{ secrets.AZURE_RESOURCE_GROUP }}
-#      CLUSTER_NAME: ${{ secrets.AZURE_AKS_CLUSTER_NAME }}
+#         CLUSTER_NAME: ${{ secrets.AZURE_AKS_CLUSTER_NAME }}
   #    REGISTRY_NAME: ${{ secrets.ACR_NAME }}
 #     REGISTRY_USERNAME: ${{ secrets.ACR_USERNAME }}
  #     REGISTRY_PASSWORD: ${{ secrets.ACR_PASSWORD }}
