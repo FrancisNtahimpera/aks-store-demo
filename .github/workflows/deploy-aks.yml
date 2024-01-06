@@ -17,6 +17,7 @@ jobs:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
           cluster-name: ${{ secrets.AZURE_AKS_CLUSTER_NAME }}
           resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}
+          k8s-version: '1.28'
 
       - name: Kubectl apply
         run: kubectl apply -f /aks-store-quickstart.yaml
