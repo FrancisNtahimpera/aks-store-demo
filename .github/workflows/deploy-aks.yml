@@ -21,7 +21,7 @@ jobs:
       run: az acr login --name ${{ secrets.ACR_NAME }} --username ${{ secrets.ACR_USERNAME }} --password ${{ secrets.ACR_PASSWORD }}
 
     - name: Display kubeconfig
-      run: cat home/francis/.kube/config
+      run: cat /home/francis/.kube/config
 
     - name: Deploy to AKS
       run: |
