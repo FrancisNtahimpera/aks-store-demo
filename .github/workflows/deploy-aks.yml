@@ -11,7 +11,7 @@ jobs:
 
     env:
       KUBE_NAMESPACE: "default"
-      DEPLOYMENT_FILE: "aks-store-all-in-one.yaml"  
+      DEPLOYMENT_FILE: "\aks-store-all-in-one.yaml"  
 
     steps:
     - name: Checkout Repository
